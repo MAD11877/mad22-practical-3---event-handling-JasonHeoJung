@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -22,11 +23,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 if (!user1.followed){
-                    follow.setText("follow");
+                    follow.setText("unfollow");
                     user1.followed = true;
+                    Toast.makeText(getApplicationContext(),
+                            "followed",
+                            Toast.LENGTH_LONG)
+                            .show();
                 }
                 else {
-                    follow.setText("unfollow");
+                    follow.setText("follow");
                     user1.followed = false;
                 }
             }
