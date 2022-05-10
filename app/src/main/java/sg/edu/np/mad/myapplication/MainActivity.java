@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -16,7 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button follow = findViewById(R.id.follow);
         user user1 = new user();
+        user1.name = "MAD";
         user1.followed = false;
+        TextView name = findViewById(R.id.textView2);
+        int ran = randomOTP();
+        name.setText(user1.name + " " + ran);
 
         follow.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("SetTextI18n")
@@ -37,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+    private int randomOTP(){
+        Random ran = new Random();
+        int value = ran.nextInt(10000);
+        return value;
     }
 }

@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import java.util.List;
+import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class ListActivity extends AppCompatActivity {
         AlertDialog.Builder builder;
         ImageView image = findViewById(R.id.ListImage);
         builder = new AlertDialog.Builder(this);
+
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,4 +47,5 @@ public class ListActivity extends AppCompatActivity {
             }
         });
     }
+
 }
