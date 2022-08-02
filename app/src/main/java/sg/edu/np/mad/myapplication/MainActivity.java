@@ -3,6 +3,7 @@ package sg.edu.np.mad.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,12 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button follow = findViewById(R.id.follow);
+        Button message = findViewById(R.id.message);
+
         user user1 = new user();
-        user1.name = "MAD";
+        int ran = randomOTP();
+        user1.name = "MAD " + ran;
         user1.followed = false;
         TextView name = findViewById(R.id.textView2);
-        int ran = randomOTP();
-        name.setText(user1.name + " " + ran);
+
+        name.setText(user1.name);
 
         follow.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("SetTextI18n")
@@ -42,12 +46,19 @@ public class MainActivity extends AppCompatActivity {
                     user1.followed = false;
                 }
             }
-
         });
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent messageIntent = new Intent(MainActivity.this, MessageGroup.class);
+                startActivity(messageIntent);
+            }
+        });
+
     }
     private int randomOTP(){
         Random ran = new Random();
-        int value = ran.nextInt(10000);
+        int value = ran.nextInt(999999999);
         return value;
     }
 }
